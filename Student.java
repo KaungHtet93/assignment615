@@ -29,18 +29,6 @@ public class Student implements Serializable {
         this.subjectMarks = subjectMarks;
     }
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Student)) return false;
-        Student s = (Student) o;
-        return id.equals(s.id); // Only ID is used to check uniqueness
-    }
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
-    @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
