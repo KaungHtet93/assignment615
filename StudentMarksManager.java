@@ -67,6 +67,7 @@ public class StudentMarksManager {
                 System.out.print("Enter marks (0-100): ");
                 marks = in.nextInt();
                 in.nextLine();
+                if(marks < 0 || marks > 100) System.out.println("Invalid marks input, It must be between 0 and 100.");
             } while (marks < 0 || marks > 100);
 
             subjectMarks.put(subject, marks);
