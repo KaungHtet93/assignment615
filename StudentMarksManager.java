@@ -94,7 +94,6 @@ public class StudentMarksManager {
             while (true) {
                 Student s = (Student) ois.readObject();
 
-                // Create async task for each student
                 CompletableFuture<Void> future = CompletableFuture.supplyAsync(() -> {
                     StringBuilder sb = new StringBuilder();
                     sb.append("\nStudent ID: ").append(s.getId());
@@ -123,7 +122,7 @@ public class StudentMarksManager {
             System.out.println("Error reading students.");
         }
 
-        // Wait for all student tasks to finish
+        //Wait for all student to finish
         CompletableFuture.allOf(futures.toArray(new CompletableFuture[0])).join();
     }
 
@@ -150,7 +149,6 @@ public class StudentMarksManager {
     }
     static void searchStudentsByName(String nameToSearch) {
         boolean found = false;
-
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
             while (true) {
                 Student s = (Student) ois.readObject();
@@ -161,7 +159,7 @@ public class StudentMarksManager {
                 }
             }
         } catch (EOFException e) {
-            // end of file, nothing more to read
+            // end of file no more to read
             if (!found) {
                 System.out.println("No student found with name: " + nameToSearch);
             }
